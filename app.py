@@ -44,7 +44,7 @@ load_dotenv(ROOT / ".env")
 
 
 st.set_page_config(
-    page_title="Rainfall Detection AI",
+    page_title="Rainfall Detection",
     page_icon="🌧️",
     layout="wide",
     initial_sidebar_state="expanded",
@@ -279,7 +279,7 @@ def home_page(language: str, df: pd.DataFrame) -> None:
             <p>{t(language, "hero_subtitle")}</p>
             <div class="cta-row">
               <span class="cta">Launch Prediction</span>
-              <span class="cta secondary">Explore AI Analytics</span>
+              <span class="cta secondary">Explore Analytics</span>
             </div>
           </div>
           <div class="weather-orbit"></div>
@@ -317,14 +317,13 @@ def home_page(language: str, df: pd.DataFrame) -> None:
         unsafe_allow_html=True,
     )
 
-    section_title("Project Team", "A clean section you can customize with your actual team members.")
+    section_title("Project Team Members")
     st.markdown(
         """
-        <span class="team-pill">Project Lead: Sayan</span>
-        <span class="team-pill">Machine Learning</span>
-        <span class="team-pill">Data Analytics</span>
-        <span class="team-pill">Streamlit Engineering</span>
-        <span class="team-pill">Final Year Project 2026</span>
+        <span class="team-pill">Sayan Maity</span>
+        <span class="team-pill">Triyasa Das</span>
+        <span class="team-pill">Sayan Mondol</span>
+        <span class="team-pill">Saroj Panrui</span>
         """,
         unsafe_allow_html=True,
     )
@@ -604,7 +603,7 @@ def sidebar() -> str:
         t(language, "home"): "Home",
         t(language, "manual"): "Manual Prediction",
         t(language, "live"): "Live Location",
-        t(language, "analytics"): "AI Analytics",
+        # t(language, "analytics"): "AI Analytics",
     }
     selected_label = st.sidebar.radio("Navigation", list(nav_labels.keys()), label_visibility="collapsed")
 
