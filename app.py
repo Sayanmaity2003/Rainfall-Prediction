@@ -274,7 +274,7 @@ def home_page(language: str, df: pd.DataFrame) -> None:
         <div class="hero">
           {rain_layer(38)}
           <div class="hero-content">
-            <div class="eyebrow">Final Year Project 2026</div>
+            <div class="eyebrow">Final Year Project</div>
             <h1>{t(language, "hero_title")}</h1>
             <p>{t(language, "hero_subtitle")}</p>
             <div class="cta-row">
@@ -594,7 +594,7 @@ def analytics_page(language: str, df: pd.DataFrame) -> None:
 
 
 def sidebar() -> str:
-    st.sidebar.markdown("## Rainfall AI")
+    st.sidebar.markdown("## Rainfall Prediction")
     language = "English"
     st.session_state.theme_mode = st.sidebar.toggle("Light Mode", value=False)
     st.session_state.theme_mode = "Light" if st.session_state.theme_mode else "Dark"
