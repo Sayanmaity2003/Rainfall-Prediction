@@ -225,7 +225,7 @@ def render_prediction_result(result: dict, language: str) -> None:
     with c4:
         st.metric("AQI", f"{float(values.get('AQI', 0)):.0f}", values.get("AQI_Category", "Moderate"))
 
-    if result.get("internet_rain_probability") is not None:
+    if result.get("internet_rain_probability") is None:
         calibration = result.get("calibration", {})
         section_title("Model vs Internet Probability")
         a1, a2, a3, a4 = st.columns(4)
@@ -378,7 +378,7 @@ def manual_prediction_page(language: str, df: pd.DataFrame) -> None:
 def live_location_page(language: str, df: pd.DataFrame, api_key: str) -> None:
     section_title(
         "Live Location Prediction",
-        "Use browser geolocation and weather APIs to generate a real-time AI rainfall forecast.",
+        "Use browser geolocation and weather APIs to generate a real-time rainfall forecast.",
     )
 
     geo_col, manual_col = st.columns([1.1, 1])
@@ -408,7 +408,7 @@ def live_location_page(language: str, df: pd.DataFrame, api_key: str) -> None:
             internet_forecast = None
             try:
                 weather = fetch_openweather(lat, lon, api_key)
-                api_note = "Live OpenWeatherMap data"
+                api_note = "Prediction: "
             except Exception as exc:
                 weather = demo_weather_from_dataset(df, lat, lon)
                 api_note = f"Demo fallback used: {exc}"
@@ -444,10 +444,10 @@ def live_location_page(language: str, df: pd.DataFrame, api_key: str) -> None:
         st.markdown(f"<p class='small-muted'>{api_note}</p>", unsafe_allow_html=True)
         if result.get("internet_forecast"):
             forecast = result["internet_forecast"]
-            st.caption(
-                f"Internet probability source: {forecast['source']} | "
-                f"{forecast['forecast_time']} | {forecast['description']}"
-            )
+            # st.caption(
+            #     f"Internet probability source: {forecast['source']} | "
+            #     f"{forecast['forecast_time']} | {forecast['description']}"
+            # )
         elif result.get("internet_probability_error"):
             st.warning(
                 "Internet rainfall probability could not be fetched, so the UI is showing the model-only prediction. "
