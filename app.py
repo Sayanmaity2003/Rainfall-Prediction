@@ -277,10 +277,7 @@ def home_page(language: str, df: pd.DataFrame) -> None:
             <div class="eyebrow">Final Year Project</div>
             <h1>{t(language, "hero_title")}</h1>
             <p>{t(language, "hero_subtitle")}</p>
-            <div class="cta-row">
-              <span class="cta">Launch Prediction</span>
-              <span class="cta secondary">Explore Analytics</span>
-            </div>
+            
           </div>
           <div class="weather-orbit"></div>
         </div>
@@ -407,7 +404,7 @@ def live_location_page(language: str, df: pd.DataFrame, api_key: str) -> None:
 
     run_live = st.button("Fetch Live Weather & Predict", use_container_width=True)
     if run_live:
-        with st.spinner("Contacting weather intelligence services..."):
+        with st.spinner("Collecting Weather Data..."):
             internet_forecast = None
             try:
                 weather = fetch_openweather(lat, lon, api_key)

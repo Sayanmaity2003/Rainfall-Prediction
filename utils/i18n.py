@@ -7,7 +7,7 @@ TRANSLATIONS = {
         "live": "Live Location",
         "analytics": "AI Analytics",
         "hero_title": "Rainfall Detection using Machine Learning",
-        "hero_subtitle": "AI-Powered Rainfall Prediction & Climate Intelligence System",
+        "hero_subtitle": "Rainfall Prediction System",
         "predict": "Predict Rainfall",
         "rain": "Rainfall Expected",
         "no_rain": "No Rainfall Expected",
