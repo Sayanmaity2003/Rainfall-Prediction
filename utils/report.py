@@ -24,12 +24,12 @@ def build_prediction_pdf(result: dict[str, Any], summary: str, recommendation: s
     story = [
         Paragraph("Rainfall Detection using Machine Learning", styles["Title"]),
         Spacer(1, 10),
-        Paragraph("AI Prediction Report", styles["Heading2"]),
+        Paragraph("Prediction Report", styles["Heading2"]),
         Paragraph(f"<b>Result:</b> {label}", styles["BodyText"]),
         Paragraph(f"<b>Rain Probability:</b> {probability:.1f}%", styles["BodyText"]),
         Paragraph(f"<b>Confidence:</b> {confidence:.1f}%", styles["BodyText"]),
         Spacer(1, 12),
-        Paragraph(f"<b>AI Summary:</b> {summary}", styles["BodyText"]),
+        Paragraph(f"<b>Summary:</b> {summary}", styles["BodyText"]),
         Paragraph(f"<b>Recommendation:</b> {recommendation}", styles["BodyText"]),
         Spacer(1, 14),
     ]

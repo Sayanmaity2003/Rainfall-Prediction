@@ -227,28 +227,28 @@ def render_prediction_result(result: dict, language: str) -> None:
 
     if result.get("internet_rain_probability") is None:
         calibration = result.get("calibration", {})
-        section_title("Model vs Internet Probability")
-        a1, a2, a3, a4 = st.columns(4)
-        with a1:
-            st.metric("Original Model", f"{result.get('model_rain_probability', probability) * 100:.1f}%")
-        with a2:
-            st.metric("Internet Forecast", f"{result['internet_rain_probability'] * 100:.1f}%")
-        with a3:
-            st.metric("Adaptive Final", f"{probability * 100:.1f}%")
-        with a4:
-            st.metric("Learning Error", f"{calibration.get('last_error', 0) * 100:+.1f}%")
-        st.markdown(
-            f"""
-            <div class="glass-card">
-              <b>Adaptive retraining:</b>
-              The original saved model predicted first. The app then compared it with live internet precipitation probability
-              and retrained a server-side calibration layer. Samples learned:
-              <b>{calibration.get("samples", 0)}</b>, correction bias:
-              <b>{calibration.get("bias", 0) * 100:+.1f}%</b>.
-            </div>
-            """,
-            unsafe_allow_html=True,
-        )
+        # section_title("Model vs Internet Probability")
+        # a1, a2, a3, a4 = st.columns(4)
+        # with a1:
+        #     st.metric("Original Model", f"{result.get('model_rain_probability', probability) * 100:.1f}%")
+        # with a2:
+        #     st.metric("Internet Forecast", f"{result['internet_rain_probability'] * 100:.1f}%")
+        # with a3:
+        #     st.metric("Adaptive Final", f"{probability * 100:.1f}%")
+        # with a4:
+        #     st.metric("Learning Error", f"{calibration.get('last_error', 0) * 100:+.1f}%")
+        # st.markdown(
+        #     f"""
+        #     <div class="glass-card">
+        #       <b>Adaptive retraining:</b>
+        #       The original saved model predicted first. The app then compared it with live internet precipitation probability
+        #       and retrained a server-side calibration layer. Samples learned:
+        #       <b>{calibration.get("samples", 0)}</b>, correction bias:
+        #       <b>{calibration.get("bias", 0) * 100:+.1f}%</b>.
+        #     </div>
+        #     """,
+        #     unsafe_allow_html=True,
+        # )
 
     st.markdown(
         f"""
@@ -299,16 +299,14 @@ def home_page(language: str, df: pd.DataFrame) -> None:
     with c4:
         metric_card("Model Status", "Active", "Scaler + ML model loaded")
 
-    section_title("Technology Stack", "A modular AI weather platform built for deployment.")
+    section_title("Technology Stack", "")
     st.markdown(
         """
         <div class="tech-grid">
           <div class="tech-card"><b>Python</b><br><span class="small-muted">Core application runtime</span></div>
           <div class="tech-card"><b>Streamlit</b><br><span class="small-muted">Interactive web UI</span></div>
           <div class="tech-card"><b>Scikit-learn</b><br><span class="small-muted">Rainfall ML model</span></div>
-          <div class="tech-card"><b>Plotly</b><br><span class="small-muted">Live analytics</span></div>
-          <div class="tech-card"><b>Weather APIs</b><br><span class="small-muted">Location climate intelligence</span></div>
-          <div class="tech-card"><b>Custom CSS</b><br><span class="small-muted">Glassmorphism animation layer</span></div>
+            
         </div>
         """,
         unsafe_allow_html=True,
@@ -479,14 +477,14 @@ def render_climate_insights(weather: dict, result: dict) -> None:
         fig = go.Figure()
         fig.add_trace(go.Scatter(x=history["time"], y=history["rain_probability"] * 100, mode="lines+markers", name="Rain Probability"))
         fig.add_trace(go.Scatter(x=history["time"], y=history["Humidity"], mode="lines", name="Humidity"))
-        fig.update_layout(
-            title="Short-Term Climate Signal",
-            height=330,
-            margin=dict(l=20, r=20, t=50, b=20),
-            paper_bgcolor="rgba(0,0,0,0)",
-            legend=dict(orientation="h"),
-        )
-        st.plotly_chart(fig, use_container_width=True)
+        # fig.update_layout(
+        #     title="Short-Term Climate Signal",
+        #     height=330,
+        #     margin=dict(l=20, r=20, t=50, b=20),
+        #     paper_bgcolor="rgba(0,0,0,0)",
+        #     legend=dict(orientation="h"),
+        # )
+        # st.plotly_chart(fig, use_container_width=True)
 
 
 def render_historical_comparison(df: pd.DataFrame, values: dict) -> None:
